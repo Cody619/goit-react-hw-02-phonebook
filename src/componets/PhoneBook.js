@@ -7,8 +7,8 @@ export const PhoneBook = (props) => {
     name,
     number,
     handleSubmit,
-    handleNameChange,
-    handleNumberChange,
+    handleChange,
+
     handleFilterChange,
   } = props
   return (
@@ -17,7 +17,7 @@ export const PhoneBook = (props) => {
       <form onSubmit={handleSubmit}>
         <h2>Name</h2>
         <input
-          onChange={handleNameChange}
+          onChange={handleChange}
           value={name}
           type="text"
           name="name"
@@ -28,7 +28,7 @@ export const PhoneBook = (props) => {
         <h2>Number</h2>
         <input
           value={number}
-          onChange={handleNumberChange}
+          onChange={handleChange}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -47,7 +47,6 @@ PhoneBook.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.number.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  handleNameChange: PropTypes.func.isRequired,
-  handleNumberChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
   handleFilterChange: PropTypes.func.isRequired,
 }
