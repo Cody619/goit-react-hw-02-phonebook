@@ -49,29 +49,20 @@ export default class App extends Component {
       }
     })
   }
-
-  handleNameChange = (event) => {
-    this.setState({ name: event.currentTarget.value })
-  }
-  handleNumberChange = (event) => {
-    this.setState({ number: event.currentTarget.value })
-  }
-
-  handleFilterChange = (event) => {
-    this.setState({ filter: event.currentTarget.value })
-  }
-  filterContacts = () => {
-    if (this.state.filter === '') {
-      return this.state.contacts
-    } else {
-      return this.state.contacts.filter((contact) => {
-        return contact.name
-          .toLowerCase()
-          .includes(this.state.filter.toLowerCase())
-      })
+  handleChange = (name, event) => {
+    this.setState({ [name]: event.currentTarget.value })
+    filterContacts = () => {
+      if (this.state.filter === '') {
+        return this.state.contacts
+      } else {
+        return this.state.contacts.filter((contact) => {
+          return contact.name
+            .toLowerCase()
+            .includes(this.state.filter.toLowerCase())
+        })
+      }
     }
-  }
-  render() {
+    render()
     return (
       <div>
         <PhoneBook
@@ -79,9 +70,7 @@ export default class App extends Component {
           name={this.state.name}
           number={this.state.number}
           handleSubmit={this.handleSubmit}
-          handleNameChange={this.handleNameChange}
-          handleNumberChange={this.handleNumberChange}
-          handleFilterChange={this.handleFilterChange}
+          handleChange={this.handleChange}
         />
         <Contacts
           contacts={this.filterContacts()}
